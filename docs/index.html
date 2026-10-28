@@ -9,178 +9,138 @@
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <style>
   :root {
-    --bg: #070b16;
-    --surface: rgba(255, 255, 255, 0.045);
-    --surface-strong: rgba(255, 255, 255, 0.075);
-    --line: rgba(255, 255, 255, 0.09);
-    --text: #f6f8ff;
-    --muted: #98a2bd;
-    --accent: #8b7cf6;
-    --accent-2: #2dd4bf;
-    --accent-deep: #6750a4;
-    --radius: 24px;
-    --shadow: 0 30px 70px -30px rgba(103, 80, 164, 0.75);
+    --bg: #080c17;
+    --text: #f4f7ff;
+    --muted: #94a0bb;
+    --line: rgba(255, 255, 255, 0.10);
+    --accent: #a99bff;
+    --accent-2: #5ee7d2;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
     background:
-      radial-gradient(900px 520px at 82% -8%, rgba(139, 124, 246, 0.28), transparent 62%),
-      radial-gradient(720px 460px at 4% 8%, rgba(45, 212, 191, 0.13), transparent 58%),
-      radial-gradient(600px 500px at 50% 108%, rgba(103, 80, 164, 0.22), transparent 65%),
+      radial-gradient(900px 520px at 84% -10%, rgba(139, 124, 246, 0.20), transparent 62%),
+      radial-gradient(700px 460px at 2% 6%, rgba(45, 212, 191, 0.09), transparent 58%),
       var(--bg);
     color: var(--text);
-    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font: 16px/1.68 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
   }
   a { color: inherit; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 22px 72px; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 30px 24px 80px; }
 
-  /* ---------- header ---------- */
-  header { display: flex; align-items: center; gap: 16px; }
-  .logo { width: 56px; height: 56px; border-radius: 16px; box-shadow: 0 16px 36px -12px rgba(103, 80, 164, 0.9); }
-  .brand { flex: 1 1 auto; font-weight: 700; letter-spacing: -0.01em; font-size: 17px; }
-  .brand span { display: block; font-weight: 400; font-size: 13px; color: var(--muted); letter-spacing: 0; }
-  .lang { display: inline-flex; padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.03); }
+  header { display: flex; align-items: center; gap: 14px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+  .logo { width: 44px; height: 44px; border-radius: 11px; }
+  .brand { flex: 1 1 auto; font-weight: 650; font-size: 16px; letter-spacing: -0.01em; }
+  .brand span { display: block; font-weight: 400; font-size: 13px; color: var(--muted); }
+  .lang { display: inline-flex; gap: 14px; }
   .lang button {
-    appearance: none; border: 0; background: transparent; color: var(--muted);
-    font: inherit; font-size: 13px; font-weight: 600; letter-spacing: .04em;
-    padding: 7px 14px; border-radius: 999px; cursor: pointer; transition: color .15s ease, background .15s ease;
+    appearance: none; border: 0; background: none; color: var(--muted); padding: 2px 0;
+    font: inherit; font-size: 13px; font-weight: 600; letter-spacing: .06em; cursor: pointer;
+    border-bottom: 1px solid transparent; transition: color .15s ease, border-color .15s ease;
   }
-  .lang button[aria-pressed="true"] { background: var(--surface-strong); color: var(--text); }
+  .lang button[aria-pressed="true"] { color: var(--text); border-bottom-color: var(--accent); }
 
-  /* ---------- hero ---------- */
-  .hero { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; margin-top: 64px; }
+  .hero { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 56px; align-items: center; padding: 58px 0 8px; }
   h1 {
-    margin: 0; font-size: clamp(34px, 5vw, 54px); line-height: 1.06; letter-spacing: -0.035em;
-    background: linear-gradient(120deg, #ffffff 20%, #c9c2ff 55%, #8fe9dd 100%);
+    margin: 0; font-size: clamp(32px, 4.6vw, 50px); line-height: 1.07; letter-spacing: -0.035em;
+    background: linear-gradient(115deg, #ffffff 22%, #cfc8ff 58%, #8fe9dd 100%);
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  .lead { margin: 20px 0 0; font-size: 17px; color: #cfd6ea; max-width: 46ch; }
+  .lead { margin: 20px 0 0; font-size: 17px; color: #cbd3e6; max-width: 48ch; }
   .lead strong { color: #fff; font-weight: 600; }
 
-  .release {
-    display: inline-flex; align-items: center; gap: 10px; margin-top: 26px;
-    padding: 9px 14px 9px 11px; border: 1px solid var(--line); border-radius: 999px;
-    background: var(--surface); text-decoration: none; font-size: 14px; color: #dbe1f3;
-    transition: border-color .15s ease, transform .15s ease, background .15s ease;
-  }
-  .release:hover { border-color: rgba(139,124,246,.6); background: var(--surface-strong); transform: translateY(-1px); }
-  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 4px rgba(45,212,191,.16); }
+  .release { display: inline-flex; align-items: center; gap: 9px; margin-top: 26px; font-size: 14px; color: #d8dfef; text-decoration: none; }
   .release b { font-weight: 600; color: #fff; }
   .release .date { color: var(--muted); }
+  .release:hover b { color: var(--accent); }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-2); }
 
-  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+  .actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 24px; }
   .btn {
-    display: inline-flex; align-items: center; gap: 9px; text-decoration: none; cursor: pointer;
-    padding: 14px 22px; border-radius: 14px; font-weight: 600; font-size: 15px;
-    border: 1px solid var(--line); color: var(--text); background: var(--surface);
-    transition: transform .15s ease, border-color .15s ease, background .15s ease, box-shadow .15s ease;
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer;
+    font-weight: 600; font-size: 15px; color: var(--text); padding: 0; background: none; border: 0;
+    border-bottom: 1px solid rgba(255,255,255,.22); padding-bottom: 3px;
+    transition: color .15s ease, border-color .15s ease;
   }
-  .btn:hover { transform: translateY(-2px); border-color: rgba(139,124,246,.55); }
-  .btn.primary {
-    border-color: transparent; color: #14102a;
-    background: linear-gradient(120deg, #b7a9ff, #8b7cf6 45%, #63e3d1);
-    box-shadow: 0 18px 40px -18px rgba(139, 124, 246, 0.95);
-  }
-  .btn.primary:hover { box-shadow: 0 22px 46px -16px rgba(139, 124, 246, 1); }
-  .btn svg { width: 17px; height: 17px; }
+  .btn:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .btn.primary { color: #0c1020; background: linear-gradient(115deg, #c3b7ff, #a99bff 45%, #6fe6d4); padding: 12px 20px; border: 0; border-radius: 8px; }
+  .btn.primary:hover { color: #0c1020; filter: brightness(1.06); }
+  .btn svg { width: 16px; height: 16px; }
 
-  /* ---------- overlay card mock ---------- */
+  /* overlay card mock — the product itself, not a UI frame */
   .stage { position: relative; display: flex; justify-content: center; }
   .stage::before {
-    content: ""; position: absolute; inset: 6% 8% 12% 8%; border-radius: 40px;
-    background: radial-gradient(circle at 60% 30%, rgba(139,124,246,.55), transparent 62%);
-    filter: blur(46px); opacity: .75;
+    content: ""; position: absolute; inset: 8% 6% 10% 6%; border-radius: 40px;
+    background: radial-gradient(circle at 60% 30%, rgba(139,124,246,.5), transparent 62%);
+    filter: blur(48px); opacity: .7;
   }
   .card {
-    position: relative; width: min(100%, 430px); border-radius: 26px; padding: 16px;
-    background: linear-gradient(160deg, rgba(71,53,86,.92), rgba(16,19,32,.94));
+    position: relative; width: min(100%, 410px); border-radius: 24px; padding: 15px;
+    background: linear-gradient(160deg, rgba(71,53,86,.94), rgba(16,19,32,.96));
     border: 1px solid rgba(255,255,255,.13);
-    box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.14);
+    box-shadow: 0 30px 70px -30px rgba(103, 80, 164, 0.8), inset 0 1px 0 rgba(255,255,255,.14);
     backdrop-filter: blur(14px);
   }
   .card-top { display: flex; gap: 14px; align-items: center; }
   .art {
-    width: 78px; height: 78px; border-radius: 18px; flex: 0 0 auto;
+    width: 74px; height: 74px; border-radius: 17px; flex: 0 0 auto;
     background: linear-gradient(140deg, #8b7cf6, #5b4bd6 55%, #2dd4bf);
-    border: 1px solid rgba(255,255,255,.28);
-    display: grid; place-items: center; color: #fff; font-size: 30px;
-    box-shadow: 0 10px 24px -12px rgba(0,0,0,.9);
+    border: 1px solid rgba(255,255,255,.28); display: grid; place-items: center;
+    color: #fff; font-size: 28px;
   }
   .meta { min-width: 0; flex: 1 1 auto; }
-  .meta .t { font-size: 16px; font-weight: 650; letter-spacing: -0.01em; }
-  .meta .a { font-size: 13px; color: rgba(248,250,252,.86); }
-  .meta .b { font-size: 12px; color: rgba(248,250,252,.6); }
-  .controls { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 14px; padding: 0 2px; color: rgba(248,250,252,.8); }
+  .meta .t { font-size: 15.5px; font-weight: 650; letter-spacing: -0.01em; }
+  .meta .a { font-size: 12.5px; color: rgba(248,250,252,.86); }
+  .meta .b { font-size: 11.5px; color: rgba(248,250,252,.6); }
+  .controls { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 13px; padding: 0 2px; color: rgba(248,250,252,.8); }
   .transport { display: flex; align-items: center; gap: 14px; }
   .reactions { display: flex; align-items: center; gap: 12px; color: rgba(248,250,252,.5); }
   .reactions svg { width: 17px; height: 17px; }
   .reactions .flip { transform: scaleY(-1); }
   .controls .play {
-    width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+    width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
     background: rgba(139,124,246,.22); border: 1px solid rgba(139,124,246,.5); color: #fff;
   }
-  .controls svg { width: 17px; height: 17px; }
-  .hint { position: absolute; left: 50%; transform: translateX(-50%); bottom: -34px; font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .controls svg { width: 16px; height: 16px; }
+  .hint { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
 
-  /* ---------- sections ---------- */
-  h2 { font-size: clamp(22px, 3vw, 28px); letter-spacing: -0.025em; margin: 92px 0 8px; }
-  .sub { color: var(--muted); margin: 0 0 24px; font-size: 15px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
-  .feature {
-    padding: 22px; border-radius: var(--radius); background: var(--surface);
-    border: 1px solid var(--line); transition: transform .18s ease, border-color .18s ease, background .18s ease;
-  }
-  .feature:hover { transform: translateY(-3px); border-color: rgba(139,124,246,.45); background: var(--surface-strong); }
-  .icon {
-    width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 14px;
-    background: linear-gradient(140deg, rgba(139,124,246,.28), rgba(45,212,191,.18));
-    border: 1px solid rgba(139,124,246,.32); color: #dcd6ff;
-  }
-  .icon svg { width: 19px; height: 19px; }
-  .feature h3 { margin: 0 0 6px; font-size: 16px; letter-spacing: -0.01em; }
+  section { padding-top: 54px; }
+  h2 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 22px; font-weight: 650; }
+  .sub { color: var(--muted); font-size: 15px; margin: -12px 0 22px; }
+
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0 46px; }
+  .feature { padding: 18px 0 20px; border-top: 1px solid var(--line); }
+  .feature h3 { margin: 0 0 5px; font-size: 16px; letter-spacing: -0.01em; }
   .feature p { margin: 0; color: var(--muted); font-size: 14.5px; }
 
-  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; counter-reset: step; }
-  .step {
-    position: relative; padding: 22px 22px 22px 58px; border-radius: var(--radius);
-    background: var(--surface); border: 1px solid var(--line);
+  ol.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+  ol.steps li { position: relative; padding: 16px 0 16px 44px; border-top: 1px solid var(--line); color: #d7ddef; font-size: 15px; }
+  ol.steps li::before {
+    counter-increment: step; content: counter(step) ".";
+    position: absolute; left: 0; top: 16px; color: var(--accent); font-weight: 650;
   }
-  .step::before {
-    counter-increment: step; content: counter(step);
-    position: absolute; left: 18px; top: 20px; width: 26px; height: 26px; border-radius: 9px;
-    display: grid; place-items: center; font-size: 13px; font-weight: 700; color: #cfc8ff;
-    background: rgba(139,124,246,.2); border: 1px solid rgba(139,124,246,.38);
-  }
-  .step p { margin: 0; color: #d7ddef; font-size: 14.5px; }
-  code { background: rgba(255,255,255,.08); padding: 1px 6px; border-radius: 6px; font-size: .92em; }
 
-  /* ---------- community ---------- */
-  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
-  .link-card {
-    display: flex; align-items: center; gap: 16px; text-decoration: none;
-    padding: 20px 22px; border-radius: var(--radius); background: var(--surface);
-    border: 1px solid var(--line); transition: transform .18s ease, border-color .18s ease, background .18s ease;
+  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0 46px; }
+  .link-row {
+    display: flex; align-items: baseline; gap: 12px; text-decoration: none;
+    padding: 16px 0; border-top: 1px solid var(--line); transition: color .15s ease;
   }
-  .link-card:hover { transform: translateY(-3px); border-color: rgba(45,212,191,.45); background: var(--surface-strong); }
-  .link-card .icon { margin: 0; }
-  .link-card b { display: block; font-size: 15px; }
-  .link-card span { font-size: 13px; color: var(--muted); }
+  .link-row:hover { color: var(--accent); }
+  .link-row b { font-size: 15px; font-weight: 600; }
+  .link-row span { font-size: 13.5px; color: var(--muted); }
+  .link-row:hover span { color: var(--muted); }
 
-  footer { margin-top: 76px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; gap: 12px; align-items: center; color: var(--muted); font-size: 13px; }
-  footer .logo { width: 26px; height: 26px; border-radius: 8px; box-shadow: none; }
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; }
+  footer .logo { width: 22px; height: 22px; border-radius: 6px; }
 
   @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; gap: 40px; margin-top: 44px; }
+    .hero { grid-template-columns: 1fr; gap: 38px; padding-top: 40px; }
     .stage { order: -1; }
-    .hint { position: static; transform: none; display: block; text-align: center; margin-top: 14px; }
-    h2 { margin-top: 64px; }
   }
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
-  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
@@ -195,7 +155,7 @@
     </div>
   </header>
 
-  <section class="hero">
+  <section class="hero" style="padding-top:58px">
     <div>
       <h1 data-i18n="h1"></h1>
       <p class="lead" data-i18n="lead"></p>
@@ -210,36 +170,32 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
           <span data-i18n="download"></span>
         </a>
-        <a class="btn" href="https://t.me/media_overlay">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.7 19c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.4 12.1 1.6 10.6c-1-.3-1-1 .2-1.5L20.6 2c.9-.3 1.6.2 1.3 2.3z"/></svg>
-          <span data-i18n="telegramGroup"></span>
-        </a>
-        <a class="btn" href="https://t.me/media_overlay_releases">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.6" fill="currentColor" stroke="none"/></svg>
-          <span data-i18n="telegramChannel"></span>
-        </a>
+        <a class="btn" href="https://t.me/media_overlay" data-i18n="telegramGroup"></a>
+        <a class="btn" href="https://t.me/media_overlay_releases" data-i18n="telegramChannel"></a>
       </div>
     </div>
 
     <div class="stage">
-      <div class="card">
-        <div class="card-top">
-          <div class="art">♪</div>
-          <div class="meta">
-            <div class="t">Midnight Drive</div>
-            <div class="a">The Satellites</div>
-            <div class="b">Afterglow</div>
+      <div>
+        <div class="card">
+          <div class="card-top">
+            <div class="art">♪</div>
+            <div class="meta">
+              <div class="t">Midnight Drive</div>
+              <div class="a">The Satellites</div>
+              <div class="b">Afterglow</div>
+            </div>
           </div>
-        </div>
-        <div class="controls">
-          <div class="transport">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM20 5 9 12l11 7z"/></svg>
-            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg></span>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM4 5l11 7L4 19z"/></svg>
-          </div>
-          <div class="reactions">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v9H4.6A1.6 1.6 0 0 1 3 18.4V12a1 1 0 0 1 1-1Z"/><path d="M7 11l3.8-6.4A1.8 1.8 0 0 1 13.9 5.5V9h4.4a1.9 1.9 0 0 1 1.9 2.3l-1.1 6A2 2 0 0 1 17.2 19H7"/></svg>
-            <svg class="flip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v9H4.6A1.6 1.6 0 0 1 3 18.4V12a1 1 0 0 1 1-1Z"/><path d="M7 11l3.8-6.4A1.8 1.8 0 0 1 13.9 5.5V9h4.4a1.9 1.9 0 0 1 1.9 2.3l-1.1 6A2 2 0 0 1 17.2 19H7"/></svg>
+          <div class="controls">
+            <div class="transport">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM20 5 9 12l11 7z"/></svg>
+              <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg></span>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM4 5l11 7L4 19z"/></svg>
+            </div>
+            <div class="reactions">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v9H4.6A1.6 1.6 0 0 1 3 18.4V12a1 1 0 0 1 1-1Z"/><path d="M7 11l3.8-6.4A1.8 1.8 0 0 1 13.9 5.5V9h4.4a1.9 1.9 0 0 1 1.9 2.3l-1.1 6A2 2 0 0 1 17.2 19H7"/></svg>
+              <svg class="flip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v9H4.6A1.6 1.6 0 0 1 3 18.4V12a1 1 0 0 1 1-1Z"/><path d="M7 11l3.8-6.4A1.8 1.8 0 0 1 13.9 5.5V9h4.4a1.9 1.9 0 0 1 1.9 2.3l-1.1 6A2 2 0 0 1 17.2 19H7"/></svg>
+            </div>
           </div>
         </div>
         <div class="hint" data-i18n="cardHint"></div>
@@ -247,59 +203,43 @@
     </div>
   </section>
 
-  <h2 data-i18n="featuresTitle"></h2>
-  <div class="grid">
-    <div class="feature">
-      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18"/><circle cx="7.5" cy="6.5" r=".9" fill="currentColor"/></svg></div>
-      <h3 data-i18n="f1t"></h3><p data-i18n="f1d"></p>
+  <section>
+    <h2 data-i18n="featuresTitle"></h2>
+    <div class="features">
+      <div class="feature"><h3 data-i18n="f1t"></h3><p data-i18n="f1d"></p></div>
+      <div class="feature"><h3 data-i18n="f2t"></h3><p data-i18n="f2d"></p></div>
+      <div class="feature"><h3 data-i18n="f3t"></h3><p data-i18n="f3d"></p></div>
+      <div class="feature"><h3 data-i18n="f4t"></h3><p data-i18n="f4d"></p></div>
+      <div class="feature"><h3 data-i18n="f5t"></h3><p data-i18n="f5d"></p></div>
+      <div class="feature"><h3 data-i18n="f6t"></h3><p data-i18n="f6d"></p></div>
     </div>
-    <div class="feature">
-      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M15 4 6 20"/><circle cx="17" cy="7" r="2.4"/><circle cx="6" cy="17" r="2.4"/></svg></div>
-      <h3 data-i18n="f2t"></h3><p data-i18n="f2d"></p>
-    </div>
-    <div class="feature">
-      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 12h16"/><path d="M8 7v10M16 7v10"/></svg></div>
-      <h3 data-i18n="f3t"></h3><p data-i18n="f3d"></p>
-    </div>
-    <div class="feature">
-      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div>
-      <h3 data-i18n="f4t"></h3><p data-i18n="f4d"></p>
-    </div>
-    <div class="feature">
-      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v5"/><path d="M6 13a6 6 0 0 1 12 0"/><path d="M4 20h16"/></svg></div>
-      <h3 data-i18n="f5t"></h3><p data-i18n="f5d"></p>
-    </div>
-    <div class="feature">
-      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v6c0 4.2 3 7.4 7.5 9 4.5-1.6 7.5-4.8 7.5-9V6z"/></svg></div>
-      <h3 data-i18n="f6t"></h3><p data-i18n="f6d"></p>
-    </div>
-  </div>
+  </section>
 
-  <h2 data-i18n="installTitle"></h2>
-  <p class="sub" data-i18n="installSub"></p>
-  <div class="steps">
-    <div class="step"><p data-i18n="s1"></p></div>
-    <div class="step"><p data-i18n="s2"></p></div>
-    <div class="step"><p data-i18n="s3"></p></div>
-    <div class="step"><p data-i18n="s4"></p></div>
-  </div>
+  <section>
+    <h2 data-i18n="installTitle"></h2>
+    <p class="sub" data-i18n="installSub"></p>
+    <ol class="steps">
+      <li data-i18n="s1"></li>
+      <li data-i18n="s2"></li>
+      <li data-i18n="s3"></li>
+      <li data-i18n="s4"></li>
+    </ol>
+  </section>
 
-  <h2 data-i18n="communityTitle"></h2>
-  <p class="sub" data-i18n="communitySub"></p>
-  <div class="links">
-    <a class="link-card" href="https://t.me/media_overlay">
-      <div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.7 19c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.4 12.1 1.6 10.6c-1-.3-1-1 .2-1.5L20.6 2c.9-.3 1.6.2 1.3 2.3z"/></svg></div>
-      <div><b data-i18n="telegramGroup"></b><span data-i18n="telegramGroupSub"></span></div>
-    </a>
-    <a class="link-card" href="https://t.me/media_overlay_releases">
-      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.6" fill="currentColor" stroke="none"/></svg></div>
-      <div><b data-i18n="telegramChannel"></b><span data-i18n="telegramChannelSub"></span></div>
-    </a>
-    <a class="link-card" href="https://github.com/dosoft/mediaoverlay/releases">
-      <div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.9c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.6 5 .3.3.6 1 .6 2v3c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></div>
-      <div><b data-i18n="githubReleases"></b><span data-i18n="githubReleasesSub"></span></div>
-    </a>
-  </div>
+  <section>
+    <h2 data-i18n="communityTitle"></h2>
+    <div class="links">
+      <a class="link-row" href="https://t.me/media_overlay">
+        <b data-i18n="telegramGroup"></b><span data-i18n="telegramGroupSub"></span>
+      </a>
+      <a class="link-row" href="https://t.me/media_overlay_releases">
+        <b data-i18n="telegramChannel"></b><span data-i18n="telegramChannelSub"></span>
+      </a>
+      <a class="link-row" href="https://github.com/dosoft/mediaoverlay/releases">
+        <b data-i18n="githubReleases"></b><span data-i18n="githubReleasesSub"></span>
+      </a>
+    </div>
+  </section>
 
   <footer>
     <img class="logo" src="logo.svg" alt="">
@@ -337,8 +277,7 @@ const I18N = {
     s2: "Разрешите установку из этого источника и откройте файл.",
     s3: "Выдайте все разрешения, которые просит приложение: оверлей, уведомления, доступ к медиа-сессиям, работа в фоне.",
     s4: "Включите сервис и запустите музыку — карточка появится при смене трека.",
-    communityTitle: "Где следить за проектом",
-    communitySub: "Релизы и обсуждение — в Telegram, сборки — на GitHub.",
+    communityTitle: "Где следить",
     telegramGroupSub: "Вопросы, баги, тема «Релизы»",
     telegramChannelSub: "Только новые версии",
     githubReleases: "GitHub Releases",
@@ -372,8 +311,7 @@ const I18N = {
     s2: "Allow installs from this source and open the file.",
     s3: "Grant every permission the app asks for: overlay, notifications, media sessions, background work.",
     s4: "Turn the service on and start playing — the card appears on every track change.",
-    communityTitle: "Where to follow the project",
-    communitySub: "Releases and discussion on Telegram, builds on GitHub.",
+    communityTitle: "Where to follow",
     telegramGroupSub: "Questions, bugs, the “Releases” topic",
     telegramChannelSub: "New versions only",
     githubReleases: "GitHub Releases",
@@ -391,21 +329,16 @@ function formatDate(iso) {
   try {
     return new Intl.DateTimeFormat(currentLang === 'ru' ? 'ru-RU' : 'en-GB',
       { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso));
-  } catch (e) {
-    return String(iso).slice(0, 10);
-  }
+  } catch (e) { return String(iso).slice(0, 10); }
 }
 
 function renderRelease() {
   const text = document.getElementById('releaseText');
   const link = document.getElementById('release');
   const download = document.getElementById('download');
-  if (!latestRelease) {
-    text.textContent = I18N[currentLang].releaseFallback;
-    return;
-  }
+  if (!latestRelease) { text.textContent = I18N[currentLang].releaseFallback; return; }
   const date = formatDate(latestRelease.date);
-  text.innerHTML = '<b>' + latestRelease.version + '</b>' + (date ? ' · <span class="date">' + date + '</span>' : '');
+  text.innerHTML = '<b>' + latestRelease.version + '</b>' + (date ? ' \u00b7 <span class="date">' + date + '</span>' : '');
   link.href = latestRelease.pageUrl;
   download.href = latestRelease.apkUrl;
 }
@@ -432,14 +365,13 @@ function fromApi(rel) {
 }
 
 async function loadRelease() {
-  // Same-origin feed first: no API rate limits and no dependency on api.github.com.
   try {
     const r = await fetch('latest.json', { cache: 'no-store' });
     if (r.ok) {
       const rel = fromFeed(await r.json());
       if (rel) { latestRelease = rel; renderRelease(); return; }
     }
-  } catch (e) { /* fall through to the API */ }
+  } catch (e) { /* fall through */ }
   try {
     const r = await fetch(RELEASE_API, { headers: { 'Accept': 'application/vnd.github+json' } });
     if (r.ok) {
