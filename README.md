@@ -10,7 +10,7 @@
 
 **Сайт:** https://dosoft.github.io/mediaoverlay/
 **Сборки:** [Releases](https://github.com/dosoft/mediaoverlay/releases/latest)
-**Telegram:** [канал](https://t.me/media_overlay) · [группа с обсуждением и темой «Релизы»](https://t.me/+eox86TLYGdRlZTJi)
+**Telegram:** [группа и обсуждение](https://t.me/media_overlay) · [канал с релизами](https://t.me/media_overlay_releases)
 
 ## Установка
 
