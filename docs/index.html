@@ -70,51 +70,62 @@
   .btn.primary:hover { color: #0c1020; filter: brightness(1.06); }
   .btn svg { width: 16px; height: 16px; }
 
-  /* head-unit mock: the card over a navigator */
+  /* phone mock: only the top part of the device, cut off at the bottom */
   .stage { position: relative; display: flex; justify-content: center; }
   .stage::before {
-    content: ""; position: absolute; inset: 2% 0 8% 0; border-radius: 60px;
-    background: radial-gradient(circle at 55% 30%, rgba(139,124,246,.40), transparent 62%);
-    filter: blur(54px); opacity: .75;
+    content: ""; position: absolute; inset: 0 0 12% 0; border-radius: 60px;
+    background: radial-gradient(circle at 55% 26%, rgba(139,124,246,.34), transparent 62%);
+    filter: blur(56px); opacity: .8;
   }
-  .stage > div { width: 100%; }
-  .device {
-    position: relative; width: 100%; max-width: 480px; margin: 0 auto; padding: 10px; border-radius: 26px;
-    background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.028));
-    border: 1px solid rgba(255,255,255,.12);
-    box-shadow: 0 44px 90px -44px rgba(0,0,0,.95);
+  .stage > div { width: 100%; max-width: 392px; }
+  .phone {
+    position: relative; width: 100%; height: 452px; padding: 7px 7px 0;
+    border-radius: 42px 42px 0 0; background: #0c111c;
+    border: 1px solid rgba(255,255,255,.14); border-bottom: 0;
+    box-shadow: 0 40px 80px -40px rgba(0,0,0,.95);
   }
-  .screen { position: relative; aspect-ratio: 16 / 9.6; border-radius: 18px; overflow: hidden; background: #0b1220; }
+  .screen { position: relative; height: 100%; border-radius: 36px 36px 0 0; overflow: hidden; background: #f1efe9; }
+  .statusbar {
+    position: absolute; top: 0; left: 0; right: 0; height: 30px; z-index: 3;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 18px; font-size: 11.5px; font-weight: 600; color: #2f333a;
+  }
+  .statusbar .sig { display: flex; align-items: center; gap: 5px; }
+  .statusbar .sig i { display: block; width: 3px; border-radius: 1px; background: #2f333a; }
+  .statusbar .sig i:nth-child(1) { height: 5px; }
+  .statusbar .sig i:nth-child(2) { height: 8px; }
+  .statusbar .sig i:nth-child(3) { height: 11px; }
+  .statusbar .sig i:nth-child(4) { height: 14px; }
   .map { position: absolute; inset: 0; width: 100%; height: 100%; }
   .card {
-    position: absolute; left: 5%; right: 5%; top: 7%;
-    border-radius: 17px; padding: 10px;
-    background: linear-gradient(160deg, rgba(71,53,86,.94), rgba(16,19,32,.95));
-    border: 1px solid rgba(255,255,255,.14);
-    box-shadow: 0 20px 44px -20px rgba(0,0,0,.95), inset 0 1px 0 rgba(255,255,255,.16);
-    backdrop-filter: blur(10px);
+    position: absolute; left: 4.5%; right: 4.5%; top: 42px; z-index: 2;
+    border-radius: 16px; padding: 9px;
+    background: linear-gradient(160deg, rgba(71,53,86,.95), rgba(16,19,32,.96));
+    border: 1px solid rgba(255,255,255,.15);
+    box-shadow: 0 18px 38px -16px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.16);
+    backdrop-filter: blur(9px);
   }
-  .card-top { display: flex; gap: 10px; align-items: center; }
+  .card-top { display: flex; gap: 9px; align-items: center; }
   .art {
-    width: 50px; height: 50px; border-radius: 12px; flex: 0 0 auto;
+    width: 46px; height: 46px; border-radius: 11px; flex: 0 0 auto;
     background: linear-gradient(140deg, #8b7cf6, #5b4bd6 55%, #2dd4bf);
     border: 1px solid rgba(255,255,255,.26); display: grid; place-items: center;
-    color: #fff; font-size: 19px;
+    color: #fff; font-size: 18px;
   }
   .meta { min-width: 0; flex: 1 1 auto; }
-  .meta .t { font-size: 12.5px; font-weight: 650; letter-spacing: -0.01em; }
-  .meta .a { font-size: 10.5px; color: rgba(248,250,252,.86); }
-  .meta .b { font-size: 9.5px; color: rgba(248,250,252,.6); }
-  .controls { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 7px; padding: 0 1px; color: rgba(248,250,252,.8); }
-  .transport { display: flex; align-items: center; gap: 9px; }
-  .reactions { display: flex; align-items: center; gap: 8px; color: rgba(248,250,252,.5); }
-  .reactions svg { width: 12px; height: 12px; }
+  .meta .t { font-size: 12px; font-weight: 650; letter-spacing: -0.01em; }
+  .meta .a { font-size: 10px; color: rgba(248,250,252,.86); }
+  .meta .b { font-size: 9px; color: rgba(248,250,252,.6); }
+  .controls { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 6px; padding: 0 1px; color: rgba(248,250,252,.8); }
+  .transport { display: flex; align-items: center; gap: 8px; }
+  .reactions { display: flex; align-items: center; gap: 7px; color: rgba(248,250,252,.5); }
+  .reactions svg { width: 11px; height: 11px; }
   .reactions .flip { transform: scaleY(-1); }
   .controls .play {
-    width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+    width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center;
     background: rgba(139,124,246,.24); border: 1px solid rgba(139,124,246,.5); color: #fff;
   }
-  .controls svg { width: 11px; height: 11px; }
+  .controls svg { width: 10px; height: 10px; }
   .hint { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
 
   section { padding-top: 54px; }
@@ -190,28 +201,45 @@
 
     <div class="stage">
       <div>
-        <div class="device">
+        <div class="phone">
           <div class="screen">
-            <svg class="map" viewBox="0 0 640 384" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <rect width="640" height="384" fill="#0b1220"/>
-              <g fill="#111a2c">
-                <rect x="26" y="150" width="118" height="92" rx="7"/>
-                <rect x="168" y="118" width="88" height="72" rx="7"/>
-                <rect x="300" y="206" width="146" height="112" rx="7"/>
-                <rect x="470" y="86" width="122" height="82" rx="7"/>
-                <rect x="58" y="292" width="152" height="74" rx="7"/>
-                <rect x="470" y="230" width="120" height="120" rx="7"/>
+            <div class="statusbar">
+              <span>12:40</span>
+              <span class="sig"><i></i><i></i><i></i><i></i></span>
+            </div>
+            <svg class="map" viewBox="0 0 360 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="360" height="430" fill="#f1efe9"/>
+              <!-- parks -->
+              <rect x="18" y="150" width="104" height="86" rx="10" fill="#cfe3bd"/>
+              <rect x="238" y="286" width="112" height="96" rx="10" fill="#d6e7c6"/>
+              <!-- river -->
+              <path d="M-10 96 C60 110 92 74 150 84 C210 94 236 132 300 124 C338 120 356 106 372 108"
+                    fill="none" stroke="#bcd7ea" stroke-width="26" stroke-linecap="round"/>
+              <!-- blocks -->
+              <g fill="#e7e3db">
+                <rect x="132" y="42" width="86" height="52" rx="6"/>
+                <rect x="236" y="40" width="96" height="60" rx="6"/>
+                <rect x="18" y="256" width="86" height="70" rx="6"/>
+                <rect x="132" y="332" width="92" height="76" rx="6"/>
               </g>
-              <g stroke="#1b2438" stroke-width="13" stroke-linecap="round" fill="none">
-                <path d="M-10 142 H650"/><path d="M-10 274 H650"/><path d="M150 -10 V394"/><path d="M424 -10 V394"/>
+              <!-- roads -->
+              <g stroke="#ffffff" stroke-width="13" stroke-linecap="round" fill="none">
+                <path d="M-10 226 H370"/>
+                <path d="M122 -10 V440"/>
               </g>
-              <g stroke="#232f47" stroke-width="5" stroke-linecap="round" fill="none">
-                <path d="M-10 62 H650"/><path d="M272 -10 V394"/><path d="M566 -10 V394"/>
+              <g stroke="#ffd88a" stroke-width="9" stroke-linecap="round" fill="none">
+                <path d="M-10 328 C70 322 120 292 176 286 S300 268 370 250"/>
               </g>
-              <path d="M118 356 C172 322 212 252 302 242 S432 210 522 118" fill="none" stroke="#5ee7d2" stroke-opacity=".26" stroke-width="15" stroke-linecap="round"/>
-              <path d="M118 356 C172 322 212 252 302 242 S432 210 522 118" fill="none" stroke="#5ee7d2" stroke-width="5" stroke-linecap="round"/>
-              <circle cx="302" cy="242" r="18" fill="#5ee7d2" opacity=".16"/>
-              <circle cx="302" cy="242" r="7" fill="#5ee7d2"/>
+              <g stroke="#ffffff" stroke-width="6" stroke-linecap="round" fill="none">
+                <path d="M232 -10 V440"/><path d="M-10 148 H370"/><path d="M18 118 V440"/>
+              </g>
+              <!-- route -->
+              <path d="M168 430 C168 372 150 336 176 300 C202 264 250 250 262 196 C272 150 258 120 266 84"
+                    fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round"/>
+              <path d="M168 430 C168 372 150 336 176 300 C202 264 250 250 262 196 C272 150 258 120 266 84"
+                    fill="none" stroke="#2f7de1" stroke-width="7" stroke-linecap="round"/>
+              <circle cx="266" cy="84" r="9" fill="#ffffff"/>
+              <circle cx="266" cy="84" r="6" fill="#2f7de1"/>
             </svg>
             <div class="card">
               <div class="card-top">
