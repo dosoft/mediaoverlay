@@ -58,3 +58,7 @@
 - **Telegram:** [группа и обсуждение](https://t.me/media_overlay) ·
   [канал с релизами](https://t.me/media_overlay_releases)
 - **Все версии:** [GitHub Releases](https://github.com/dosoft/mediaoverlay/releases)
+
+---
+
+<p align="center">© Oleg Danilov · <a href="https://olegd.com">olegd.com</a></p>

@@ -135,6 +135,9 @@
 
   footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; }
   footer .logo { width: 22px; height: 22px; border-radius: 6px; }
+  footer .copy { margin-left: auto; }
+  footer .copy a { color: #c9c3ff; text-decoration: none; border-bottom: 1px solid rgba(201,195,255,.35); }
+  footer .copy a:hover { color: #fff; }
 
   @media (max-width: 860px) {
     .hero { grid-template-columns: 1fr; gap: 38px; padding-top: 40px; }
@@ -244,6 +247,7 @@
   <footer>
     <img class="logo" src="logo.svg" alt="">
     <span>Media Overlay</span>
+    <span class="copy">&copy; Oleg Danilov &middot; <a href="https://olegd.com">olegd.com</a></span>
   </footer>
 </div>
 
