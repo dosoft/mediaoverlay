@@ -327,7 +327,7 @@ const I18N = {
     installSub: "Пять минут на магнитоле, дальше обновления приходят сами.",
     s1: "Скачайте APK из последнего релиза.",
     s2: "Разрешите установку из этого источника и откройте файл.",
-    s3: "Выдайте разрешения «Поверх других приложений» и доступ к уведомлениям.",
+    s3: "Выдайте все разрешения, которые просит приложение: оверлей, уведомления, доступ к медиа-сессиям, работа в фоне.",
     s4: "Включите сервис и запустите музыку — карточка появится при смене трека.",
     communityTitle: "Где следить за проектом",
     communitySub: "Релизы и обсуждение — в Telegram, сборки — на GitHub.",
@@ -363,7 +363,7 @@ const I18N = {
     installSub: "Five minutes on the head unit; updates arrive on their own afterwards.",
     s1: "Download the APK from the latest release.",
     s2: "Allow installs from this source and open the file.",
-    s3: "Grant “Display over other apps” and notification access.",
+    s3: "Grant every permission the app asks for: overlay, notifications, media sessions, background work.",
     s4: "Turn the service on and start playing — the card appears on every track change.",
     communityTitle: "Where to follow the project",
     communitySub: "Releases and discussion on Telegram, builds on GitHub.",
@@ -374,7 +374,8 @@ const I18N = {
   }
 };
 
-const RELEASE_API = 'https://api.github.com/repos/dosoft/mediaoverlay/releases/latest';
+const REPO = 'dosoft/mediaoverlay';
+const RELEASE_API = 'https://api.github.com/repos/' + REPO + '/releases/latest';
 let currentLang = 'ru';
 let latestRelease = null;
 
@@ -384,7 +385,7 @@ function formatDate(iso) {
     return new Intl.DateTimeFormat(currentLang === 'ru' ? 'ru-RU' : 'en-GB',
       { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso));
   } catch (e) {
-    return iso.slice(0, 10);
+    return String(iso).slice(0, 10);
   }
 }
 
@@ -396,23 +397,60 @@ function renderRelease() {
     text.textContent = I18N[currentLang].releaseFallback;
     return;
   }
-  const version = (latestRelease.tag_name || '').replace(/^v/, '') || latestRelease.name || '';
-  const date = formatDate(latestRelease.published_at);
-  text.innerHTML = '<b>' + version + '</b>' + (date ? ' · <span class="date">' + date + '</span>' : '');
-  link.href = latestRelease.html_url || link.href;
-  const apk = (latestRelease.assets || []).find(a => /\.apk$/i.test(a.name));
-  if (apk) download.href = apk.browser_download_url;
+  const date = formatDate(latestRelease.date);
+  text.innerHTML = '<b>' + latestRelease.version + '</b>' + (date ? ' · <span class="date">' + date + '</span>' : '');
+  link.href = latestRelease.pageUrl;
+  download.href = latestRelease.apkUrl;
+}
+
+function fromFeed(d) {
+  if (!d || !d.versionName) return null;
+  const v = d.versionName;
+  return {
+    version: v,
+    date: d.publishedAt || null,
+    pageUrl: 'https://github.com/' + REPO + '/releases/tag/v' + v,
+    apkUrl: d.apkUrl || ('https://github.com/' + REPO + '/releases/download/v' + v + '/MediaOverlay-' + v + '.apk')
+  };
+}
+
+function fromApi(rel) {
+  const apk = (rel.assets || []).find(function (a) { return /\.apk$/i.test(a.name); });
+  return {
+    version: (rel.tag_name || '').replace(/^v/, '') || rel.name || '',
+    date: rel.published_at || null,
+    pageUrl: rel.html_url,
+    apkUrl: apk ? apk.browser_download_url : rel.html_url
+  };
+}
+
+async function loadRelease() {
+  // Same-origin feed first: no API rate limits and no dependency on api.github.com.
+  try {
+    const r = await fetch('latest.json', { cache: 'no-store' });
+    if (r.ok) {
+      const rel = fromFeed(await r.json());
+      if (rel) { latestRelease = rel; renderRelease(); return; }
+    }
+  } catch (e) { /* fall through to the API */ }
+  try {
+    const r = await fetch(RELEASE_API, { headers: { 'Accept': 'application/vnd.github+json' } });
+    if (r.ok) {
+      const rel = fromApi(await r.json());
+      if (rel && rel.version) { latestRelease = rel; renderRelease(); }
+    }
+  } catch (e) { /* keep the fallback link */ }
 }
 
 function applyLang(lang) {
   currentLang = lang === 'en' ? 'en' : 'ru';
   const dict = I18N[currentLang];
   document.documentElement.lang = currentLang;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
+  document.querySelectorAll('[data-i18n]').forEach(function (el) {
     const value = dict[el.dataset.i18n];
     if (value !== undefined) el.textContent = value;
   });
-  document.querySelectorAll('[data-lang]').forEach(btn => {
+  document.querySelectorAll('[data-lang]').forEach(function (btn) {
     btn.setAttribute('aria-pressed', String(btn.dataset.lang === currentLang));
   });
   try { localStorage.setItem('mo-lang', currentLang); } catch (e) {}
@@ -420,21 +458,14 @@ function applyLang(lang) {
 }
 
 const params = new URLSearchParams(location.search);
-const saved = (() => { try { return localStorage.getItem('mo-lang'); } catch (e) { return null; } })();
+const saved = (function () { try { return localStorage.getItem('mo-lang'); } catch (e) { return null; } })();
 applyLang(params.get('lang') === 'en' || (saved === 'en' && params.get('lang') !== 'ru') ? 'en' : 'ru');
 
-document.querySelectorAll('[data-lang]').forEach(btn => {
-  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+document.querySelectorAll('[data-lang]').forEach(function (btn) {
+  btn.addEventListener('click', function () { applyLang(btn.dataset.lang); });
 });
 
-fetch(RELEASE_API, { headers: { 'Accept': 'application/vnd.github+json' } })
-  .then(r => (r.ok ? r.json() : null))
-  .then(rel => {
-    if (!rel) return;
-    latestRelease = rel;
-    renderRelease();
-  })
-  .catch(() => { /* keep the fallback link */ });
+loadRelease();
 </script>
 </body>
 </html>
