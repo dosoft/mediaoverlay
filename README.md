@@ -61,4 +61,4 @@
 
 ---
 
-<p align="center">© Oleg Danilov · <a href="https://olegd.com">olegd.com</a></p>
+<p align="center">© <a href="https://olegd.com">Oleg Danilov</a> · olegd.com</p>
