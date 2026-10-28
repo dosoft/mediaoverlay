@@ -10,16 +10,15 @@
   <a href="#русский">Русский</a> · <a href="#english">English</a>
 </p>
 
-![Пример карточки поверх навигатора на экране магнитолы / Now-playing card over navigation on a head unit](docs/headunit.png)
+![Так выглядит карточка в машине / This is how the card looks in the car](docs/headunit.png)
 
 ---
 
 ## Русский
 
-Media Overlay — музыкальная карточка для Android-магнитол. Когда музыка меняется,
-поверх текущего приложения на несколько секунд появляется обложка, название,
-исполнитель, альбом и кнопки. Карточка не забирает фокус и не мешает нажимать
-на то, что под ней.
+Музыка меняется — поверх текущего приложения на несколько секунд выезжает
+компактная карточка: обложка, название, исполнитель, альбом и кнопки. Она не
+забирает фокус и не мешает нажимать на то, что под ней.
 
 **[Скачать APK](https://github.com/dosoft/mediaoverlay/releases/latest)** ·
 [Сайт](https://dosoft.github.io/mediaoverlay/) ·
@@ -28,16 +27,17 @@ Media Overlay — музыкальная карточка для Android-маг�
 
 ### Что умеет
 
-- **Шесть тем:** Linen, Porcelain, Obsidian, Night Drive, Aurora и Blueprint.
-- **Смена темы нажатием:** нажмите на карточку вне кнопок, чтобы снова показать
-  текущую композицию в новом оформлении.
+- **Шесть тем:** Linen, Porcelain, Obsidian, Night Drive, Aurora, Blueprint —
+  от тёплой бумаги до неона.
+- **Смена темы нажатием:** нажмите на карточку вне кнопок, чтобы сменить тему
+  и снова показать текущую композицию.
 - **Настройки:** позиция, ширина карточки, тайминги и анимация.
-- **Обновления:** автоматическая проверка раз в сутки или вручную; установка
-  новой версии после подтверждения. Автопроверку можно отключить в настройках.
+- **Обновляется само:** раз в сутки и по кнопке проверяет новую версию и
+  ставит её после подтверждения. Автопроверку можно отключить в настройках.
 
 ### Установка
 
-Один раз устанавливаем самостоятельно, затем обновления приходят через OTA.
+Один раз устанавливаем самостоятельно, затем прилетают автоапдейты через OTA.
 
 > **Предупреждение при установке.** Android или Google Play Защита могут
 > предупредить о возможной опасности при установке APK вне Google Play. Для
@@ -47,35 +47,42 @@ Media Overlay — музыкальная карточка для Android-маг�
 
 1. Скачайте APK из [последнего релиза](https://github.com/dosoft/mediaoverlay/releases/latest).
 2. Разрешите установку из этого источника и откройте файл.
-3. Запустите приложение и выдайте все разрешения, которые оно просит.
+3. Выдайте все разрешения, которые просит приложение: оверлей, уведомления,
+   доступ к медиа-сессиям, работа в фоне.
 4. Включите сервис и запустите музыку — карточка появится при смене композиции.
+
+### Где следить
+
+- [Telegram-группа](https://t.me/media_overlay) — вопросы, баги, тема «Релизы».
+- [Telegram-канал](https://t.me/media_overlay_releases) — только новые версии.
+- [GitHub Releases](https://github.com/dosoft/mediaoverlay/releases) — все версии и файлы.
 
 ---
 
 ## English
 
-Media Overlay is a now-playing card for Android head units. When the track
-changes, a compact card with artwork, title, artist, album and controls appears
-over the current app for a few seconds. It does not take focus or block taps
-on the app underneath.
+The song changes — and a compact card slides in over the current app for a
+few seconds: artwork, title, artist, album and controls. It never takes focus
+and never blocks taps on what is underneath.
 
 **[Download APK](https://github.com/dosoft/mediaoverlay/releases/latest)** ·
 [Website](https://dosoft.github.io/mediaoverlay/?lang=en) ·
 [Telegram group](https://t.me/media_overlay) ·
 [Telegram channel](https://t.me/media_overlay_releases)
 
-### Features
+### What it does
 
-- **Six themes:** Linen, Porcelain, Obsidian, Night Drive, Aurora and Blueprint.
-- **Tap to switch themes:** tap the card outside the buttons to show the same
-  track in the next theme.
-- **Settings:** card position and width, timings and animation.
-- **Updates:** automatic daily or manual checks, with installation after your
-  confirmation. Automatic checks can be disabled in settings.
+- **Six themes:** Linen, Porcelain, Obsidian, Night Drive, Aurora, Blueprint —
+  from warm paper to neon.
+- **Tap to switch theme:** a tap on the card, outside the buttons, moves to
+  the next skin and replays the same track.
+- **Settings:** position, card width, timings and animation.
+- **Updates itself:** once a day and on demand it checks for a new build and
+  installs it after you confirm. Automatic checks can be disabled in settings.
 
-### Installation
+### Install
 
-Install once by hand; subsequent updates arrive over the air (OTA).
+Install once by hand — after that updates arrive over the air (OTA).
 
 > **Installation warning.** Android or Google Play Protect may warn about a
 > potential risk when installing an APK from outside Google Play. The app also
@@ -85,8 +92,15 @@ Install once by hand; subsequent updates arrive over the air (OTA).
 
 1. Download the APK from the [latest release](https://github.com/dosoft/mediaoverlay/releases/latest).
 2. Allow installs from this source and open the file.
-3. Launch the app and grant all the permissions it requests.
-4. Turn on the service and start playing music — the card appears when the track changes.
+3. Grant every permission the app asks for: overlay, notifications, media
+   sessions, background work.
+4. Turn the service on and start playing — the card appears on every track change.
+
+### Where to follow
+
+- [Telegram group](https://t.me/media_overlay) — questions, bugs, the «Releases» topic.
+- [Telegram channel](https://t.me/media_overlay_releases) — new versions only.
+- [GitHub Releases](https://github.com/dosoft/mediaoverlay/releases) — every version and file.
 
 ---
 
