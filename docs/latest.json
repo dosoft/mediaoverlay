@@ -1,10 +1,10 @@
 {
-  "versionCode": 10302,
-  "versionName": "1.3.2",
-  "apkUrl": "https://github.com/dosoft/mediaoverlay/releases/download/v1.3.2/MediaOverlay-1.3.2.apk",
-  "sha256": "cca6ac9afe18efbe62181b3d6668677758ee5a5e8175d07cdb94e4ee5e5fa0e7",
+  "versionCode": 10305,
+  "versionName": "1.3.5",
+  "apkUrl": "https://github.com/dosoft/mediaoverlay/releases/download/v1.3.5/MediaOverlay-1.3.5.apk",
+  "sha256": "62adb4cc8a1bf030c3d0113a06474b9cddad433e5d5efb1f4df763abebd9ef30",
   "sizeBytes": 2243131,
-  "changelog": "### Улучшено\n- Во всех оформлениях карточка показывает название трека, исполнителя и альбом; Linen раньше скрывал альбом.",
-  "revision": "efbbd3f",
-  "publishedAt": "2026-10-28T11:30:06Z"
+  "changelog": "### Улучшено\n- Заголовки разделов настроек больше не закрепляются при прокрутке.\n- Кнопка показа плашки перенесена к настройкам внешнего вида.\n- В настройках появились ссылки на группу и канал Telegram и на сайт приложения на GitHub.\n- На широких экранах настройки собраны в более удобную для чтения колонку, а разделы лучше различимы.\n\n### Исправлено\n- При переключении между плеерами плашка следует за воспроизводящим музыку приложением.",
+  "revision": "7c36e2f",
+  "publishedAt": "2026-10-31T21:15:43Z"
 }
